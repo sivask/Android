@@ -21,7 +21,7 @@ import android.widget.Toast;
 
 
 	public class Registerform  extends Activity implements OnClickListener {
-		private EditText user, pass,company_name,description,contact_no;
+		private EditText user, pass,confirmpass,company_name,description,contact_no;
 		private Button Register;
 		
 	        
@@ -56,8 +56,9 @@ import android.widget.Toast;
 			super.onCreate(savedInstanceState);
 			setContentView(R.layout.registerpage);
 			
-			//user = (EditText)findViewById(R.id.username);
-			//pass = (EditText)findViewById(R.id.password);
+			 user = (EditText)findViewById(R.id.username);
+			 pass = (EditText)findViewById(R.id.password);
+			 confirmpass = (EditText)findViewById(R.id.c_pass);
 			company_name = (EditText)findViewById(R.id.c_name);
 			description = (EditText)findViewById(R.id.descrip);
 			contact_no = (EditText)findViewById(R.id.contact);
@@ -101,17 +102,18 @@ import android.widget.Toast;
 				 // Check for success tag
 	            int success;
 	          //user = (EditText)findViewById(R.id.username);
-	           // String username = user.getText().toString();
-	           // String password = pass.getText().toString();
+	            String username = user.getText().toString();
+	            String password = pass.getText().toString();
+	       	    String c_pass = confirmpass.getText().toString();
 	            String c_name = company_name.getText().toString();
 	            String descrip = description.getText().toString();
 	            String contact = contact_no.getText().toString();
 	            try {
 	                // Building Parameters
 	                List<NameValuePair> params = new ArrayList<NameValuePair>();
-	                //params.add(new BasicNameValuePair("txtUname", username));
-	                //params.add(new BasicNameValuePair("txtPass", password));
-	                //params.add(new BasicNameValuePair("txtcompany", password));
+	                params.add(new BasicNameValuePair("txtUname", username));
+	                params.add(new BasicNameValuePair("txtPass", password));
+	                params.add(new BasicNameValuePair("txtconfirmpass",c_pass));
 	                params.add(new BasicNameValuePair("txtcompany_name",c_name));
 	                params.add(new BasicNameValuePair("txtdescription",descrip));
 	                params.add(new BasicNameValuePair("txtcontact_no",contact));
